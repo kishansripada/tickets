@@ -128,9 +128,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                         />
                      </div>
                   </div>
-                  <div className="mt-10 lg:mt-0 lg:w-1/3 w-full ">
-                     <InstagramEmbed event={event}></InstagramEmbed>
-                  </div>
+                  <div className="mt-10 lg:mt-0 lg:w-1/3 w-full ">{/* <InstagramEmbed event={event}></InstagramEmbed> */}</div>
                </main>
             </div>
 

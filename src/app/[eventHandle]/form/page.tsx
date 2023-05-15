@@ -55,7 +55,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
             </Link>
 
             <div className="flex flex-col items-center w-full py-10">
-               <p className="text-white text-3xl mb-9">{event.name}</p>
+               <p className="font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-4xl mb-9 ">
+                  {event.name}
+               </p>
                <Form event={event}></Form>
             </div>
          </div>

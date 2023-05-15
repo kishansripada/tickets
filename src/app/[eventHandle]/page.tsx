@@ -72,7 +72,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                      </div>
 
                      <div className=" mt-2  text-2xl font-bold text-neutral-100">
-                        <span className="text-3xl font-semibold text-neutral-100">{event.name}</span>{" "}
+                        <span className="text-3xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent ">
+                           {event.name}
+                        </span>{" "}
                         <span className=" text-base text-neutral-400 font-light"> on </span>{" "}
                         <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).date}</span>{" "}
                         <span className=" text-base text-neutral-400 font-light"> @ </span>
@@ -95,37 +97,31 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                         <p className="text-2xl mr-2">📍</p>
                         <p className="  font-light text-neutral-300">Rogel Ballroom @ The Michigan Union</p>
                      </div>
-                     <div
-                        className="mt-4 rounded-xl lg:mr-5"
-                        style={{
-                           // maxWidth: "100%",
-                           listStyle: "none",
-                           transition: "none",
-                           overflow: "hidden",
-                           // maxWidth: 400,
-                           height: 200,
-                        }}
-                     >
-                        <div id="embed-ded-map-canvas" style={{ height: "100%", width: "100%", maxWidth: "100%" }}>
-                           <iframe
-                              style={{
-                                 height: "100%",
-                                 width: "100%",
-                                 border: 0,
-                                 filter: "invert(90%)",
-                              }}
-                              src="https://www.google.com/maps/embed/v1/place?q=Michigan+Union,+South+State+Street,+Ann+Arbor,+MI,+USA&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
-                           />
-                        </div>
-                        <a className="from-embedmap-code" href="https://kbj9qpmy.com/hrn" id="grab-map-info">
-                           Hosting Right Now
-                        </a>
-                        <style
-                           dangerouslySetInnerHTML={{
-                              __html:
-                                 "#embed-ded-map-canvas img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}",
-                           }}
-                        />
+                     <div className="flex flex-row items-center  text-sm">
+                        <p className="text-2xl mr-2">⏰ </p>
+                        <p className="  font-light text-neutral-300">3 hours long</p>
+                     </div>
+                     <div className="flex flex-row items-center mt-3">
+                        <p className="text-white ">add to your calendar</p>
+                        <svg
+                           xmlns="http://www.w3.org/2000/svg"
+                           fill="none"
+                           viewBox="0 0 24 24"
+                           strokeWidth={1.5}
+                           stroke="currentColor"
+                           className="w-6 h-6 stroke-white ml-2"
+                        >
+                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                     </div>
+
+                     <div>
+                        <p className="font-light text-neutral-300 text-lg mt-7">
+                           {/* <span className="text-2xl mr-2">ℹ️</span> */}
+                           We are going to be having our first ever Punjabi Gala on September 17th at 7:00pm! This will be held at University of
+                           Michigan’s Rogel Ballroom in Ann Arbor. This is a formal night filled with food, music with a live DJ, bhangra and giddha
+                           performances, and an open dance floor! The Google Form is listed below to purchase tickets. You don’t want to miss out!
+                        </p>
                      </div>
                   </div>
                   <div className="mt-10 lg:mt-0 lg:w-1/3 max-w-[90%] overflow-clip">
@@ -141,7 +137,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                   </div>
 
                   <Link href={`/${eventHandle}/form`}>
-                     <button className="bg-indigo-700 rounded-md px-4 py-2 text-white">Get tickets</button>
+                     <button className="bg-indigo-700 rounded-md px-4 py-2 text-white">get tickets</button>
                   </Link>
                </div>
             </div>

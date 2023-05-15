@@ -7,14 +7,15 @@ import { getPaymentLink } from "../api";
 import { useRouter } from "next/navigation";
 import { Venmo } from "./Venmo";
 export function Form({ event }) {
-   let [paymentLink, setPaymentLink] = useState();
-   useEffect(() => {
-      getPaymentLink("prod_NsOJPEMZDCWyhV", 2500).then((r) => {
-         setPaymentLink(r.url);
-      });
-   }, []);
    const router = useRouter();
    const [formData, setFormData] = useState({ name: "", email: "", university: "" });
+   let [paymentLink, setPaymentLink] = useState();
+   useEffect(() => {
+      if (!isValidEmail(formData.email)) return;
+      getPaymentLink("prod_NsOJPEMZDCWyhV", Math.round(2500 / 0.94), formData.email).then((r) => {
+         setPaymentLink(r.url);
+      });
+   }, [formData.email]);
    return (
       <div className="lg:w-[400px] w-full px-5 lg:px-0 text-white text-sm ">
          <p className="text-center text-base py-4"> just a few questions and you'll be on your way ⚡️</p>

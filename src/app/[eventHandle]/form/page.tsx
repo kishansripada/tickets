@@ -5,6 +5,7 @@ import { Form } from "./Form";
 // const InstagramEmbed = dynamic(() => import("../[eventId]/InstagramEmbed").then((mod) => mod.InstagramEmbed), {
 //    loading: () => <p>Loading...</p>,
 // });
+import Script from "next/script";
 import { Venmo } from "./Venmo";
 import { InstagramEmbed } from "./InstagramEmbed";
 // import { useSearchParams } from "next/navigation";
@@ -31,15 +32,32 @@ async function getEvent(eventHandle: string) {
 }
 
 export default async function Home({ params: { eventHandle } }: { params: { eventHandle: string } }) {
-   // const router = useRouter();
-
    const event = await getEvent(eventHandle);
    console.log(event);
    return (
       <>
-         <div className="bg-neutral-900 h-screen flex flex-col items-center w-full py-20 ">
-            <p className="text-white text-3xl mb-9">{event.name}</p>
-            <Form event={event}></Form>
+         <div className="bg-neutral-900 h-screen  ">
+            <Link href={`/${eventHandle}`}>
+               {" "}
+               <div className="flex flex-row items-center text-white cursor-pointer p-5">
+                  <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     strokeWidth={1.5}
+                     stroke="currentColor"
+                     className="w-6 h-6 mr-2 stroke-white"
+                  >
+                     <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                  </svg>
+                  <p>back</p>
+               </div>
+            </Link>
+
+            <div className="flex flex-col items-center w-full py-10">
+               <p className="text-white text-3xl mb-9">{event.name}</p>
+               <Form event={event}></Form>
+            </div>
          </div>
       </>
    );

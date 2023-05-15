@@ -7,8 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
    //  const event = await getEvent();
    //  console.log(event);
    return (
-      <body>
-         <Script strategy="afterInteractive" src="https://instagram.com/embed.js" />
+      <body className="flex flex-col h-screen">
          <div className="border-b border-neutral-700 lg:py-8 py-6  flex flex-row lg:justify-start justify-center items-center lg:px-36 bg-black ">
             {/* <img src="/logo.png" className="h-20" alt="" /> */}
             {/* <p className="text-white text-2xl font-semibold tracking-wide">nightpass</p> */}

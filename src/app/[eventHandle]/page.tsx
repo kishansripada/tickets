@@ -13,7 +13,7 @@ import { getPaymentLink } from "./api";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { headers, cookies } from "next/headers";
 export const revalidate = 0;
-
+import Script from "next/script";
 async function getEvent(eventHandle: string) {
    const supabase = createServerComponentSupabaseClient({
       supabaseUrl: "https://ztjwnqoxzawzchzggpew.supabase.co",
@@ -41,8 +41,8 @@ export default async function Home({ params: { eventHandle } }: { params: { even
    return (
       <>
          <div className="bg-black ">
-            <div className="bg-neutral-900 h-20 grid place-items-center px-[10%] ">
-               <div className="bg-black max-w-[700px] w-full h-12 rounded-md text-white flex flex-row items-center justify-center">
+            <div className="bg-black h-20 grid place-items-center px-[10%] ">
+               <div className="bg-neutral-900 max-w-[700px] w-full h-12 rounded-md text-white flex flex-row items-center justify-center">
                   <div className="text-white bg-red-700 py-[1px] px-2 rounded-md text-xs flex flex-row items-center mr-2">
                      <div className="bg-white h-2 w-2 rounded-full animate-pulse mr-2"></div>
                      <p>LIVE</p>
@@ -53,7 +53,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                   </p>
                </div>
             </div>
-            <div className="flex flex-col bg-neutral-900 items-center w-full h-full ">
+            <div className="flex flex-col  items-center w-full h-full ">
                <main className="flex lg:w-full lg:flex-row flex-col items-start justify-between lg:px-[10%] px-5 h-full lg:max-w-none pb-7 pt-5 ">
                   <div className="z-10 w-full flex flex-col  text-sm lg:w-2/3 mr-5 ">
                      <div className="flex flex-row child:mr-2">
@@ -128,7 +128,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                         />
                      </div>
                   </div>
-                  <div className="mt-10 lg:mt-0 lg:w-1/3 w-full ">{/* <InstagramEmbed event={event}></InstagramEmbed> */}</div>
+                  <div className="mt-10 lg:mt-0 lg:w-1/3 max-w-[90%] overflow-clip">
+                     <InstagramEmbed event={event}></InstagramEmbed>
+                  </div>
                </main>
             </div>
 

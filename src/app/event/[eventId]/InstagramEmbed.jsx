@@ -1,16 +1,14 @@
 "use client";
-// import { useEffect, useTransition, useState } from "react";
+import { useEffect, useTransition, useState } from "react";
 import Script from "next/script";
 import Image from "next/image";
 import { getPaymentLink } from "./api";
-
-export function InstagramEmbed({ event }) {
-   console.log(event);
+export function InstagramEmbed() {
    return (
       <blockquote
          className="instagram-media border-neutral-700 "
          data-instgrm-captioned=""
-         data-instgrm-permalink={event.instagram_post_preview}
+         data-instgrm-permalink="https://www.instagram.com/p/CgumECxvCtP/?utm_source=ig_embed&utm_campaign=loading"
          data-instgrm-version={14}
          style={{
             // background: "#FFF",
@@ -29,7 +27,7 @@ export function InstagramEmbed({ event }) {
          <div style={{ padding: 16 }}>
             {" "}
             <a
-               href={event.instagram_post_preview}
+               href="https://www.instagram.com/p/CgumECxvCtP/?utm_source=ig_embed&utm_campaign=loading"
                style={{
                   //   background: "#FFFFFF",
                   lineHeight: 0,
@@ -256,7 +254,7 @@ export function InstagramEmbed({ event }) {
                }}
             >
                <a
-                  href={event.instagram_post_preview}
+                  href="https://www.instagram.com/p/CgumECxvCtP/?utm_source=ig_embed&utm_campaign=loading"
                   style={{
                      color: "#c9c8cd",
                      fontFamily: "Arial,sans-serif",

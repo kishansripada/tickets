@@ -137,20 +137,11 @@ export default async function Home({ params: { eventHandle } }: { params: { even
             <div className="h-24 w-full fixed bottom-0  border-t border-neutral-700 flex flex-row items-center px-5 lg:px-10 z-50 bg-black">
                <div className=" lg:justify-end justify-between flex flex-row items-center w-full ">
                   <div className="flex flex-row items-end mr-6 ">
-                     {/* <p className="text-neutral-500 text-xs mr-3 mb-1">price locked in at</p> */}
                      <p className="text-2xl font-semibold text-white ">$25</p>
                   </div>
 
                   <Link href={`/${eventHandle}/form`}>
-                     <button
-                        // onClick={() => {
-                        //    if (!paymentLink) return;
-                        //    router.push(paymentLink);
-                        // }}
-                        className="bg-indigo-700 rounded-md px-4 py-2 text-white"
-                     >
-                        Get tickets
-                     </button>
+                     <button className="bg-indigo-700 rounded-md px-4 py-2 text-white">Get tickets</button>
                   </Link>
                </div>
             </div>

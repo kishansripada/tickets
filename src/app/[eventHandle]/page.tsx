@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { useEffect, useTransition, useState } from "react";
 import dynamic from "next/dynamic";
 // const InstagramEmbed = dynamic(() => import("../[eventId]/InstagramEmbed").then((mod) => mod.InstagramEmbed), {
@@ -11,17 +11,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { getPaymentLink } from "./api";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { headers, cookies } from "next/headers";
+// import { headers, cookies } from "next/headers";
 export const revalidate = 0;
 import Script from "next/script";
+import { createClient } from "@supabase/supabase-js";
 async function getEvent(eventHandle: string) {
-   const supabase = createServerComponentSupabaseClient({
-      supabaseUrl: "https://ztjwnqoxzawzchzggpew.supabase.co",
-      supabaseKey:
-         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0anducW94emF3emNoemdncGV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQwMzAyMTksImV4cCI6MTk5OTYwNjIxOX0.aoaY3o7uzJSbCps6U23dhTjtaYTyIDV8FAlwbbp3Kzk",
-      headers,
-      cookies,
-   });
+   // const supabase = createServerComponentSupabaseClient({
+   //    supabaseUrl: "https://ztjwnqoxzawzchzggpew.supabase.co",
+   //    supabaseKey:
+   //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0anducW94emF3emNoemdncGV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQwMzAyMTksImV4cCI6MTk5OTYwNjIxOX0.aoaY3o7uzJSbCps6U23dhTjtaYTyIDV8FAlwbbp3Kzk",
+   //    headers,
+   //    cookies,
+   // });
+
+   const supabase = createClient(
+      "https://ztjwnqoxzawzchzggpew.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0anducW94emF3emNoemdncGV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQwMzAyMTksImV4cCI6MTk5OTYwNjIxOX0.aoaY3o7uzJSbCps6U23dhTjtaYTyIDV8FAlwbbp3Kzk"
+   );
 
    let { data: event, error } = await supabase.from("events").select("*").eq("handle", eventHandle).single();
 

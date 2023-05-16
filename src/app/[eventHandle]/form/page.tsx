@@ -5,8 +5,9 @@ import { Form } from "./Form";
 // const InstagramEmbed = dynamic(() => import("../[eventId]/InstagramEmbed").then((mod) => mod.InstagramEmbed), {
 //    loading: () => <p>Loading...</p>,
 // });
-import Script from "next/script";
+// import Script from "next/script";
 import { Venmo } from "./Venmo";
+import Script from "next/script";
 // import { InstagramEmbed } from "./InstagramEmbed";
 // import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -34,6 +35,7 @@ async function getEvent(eventHandle: string) {
 export default async function Home({ params: { eventHandle } }: { params: { eventHandle: string } }) {
    const event = await getEvent(eventHandle);
    console.log(event);
+
    return (
       <>
          <div className="bg-neutral-900 h-screen  ">

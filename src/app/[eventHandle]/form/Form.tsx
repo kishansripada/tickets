@@ -16,6 +16,10 @@ export function Form({ event }) {
          setPaymentLink(r.url);
       });
    }, [formData.email]);
+   const addVenmoButton = () => {
+      paypal.Buttons().render("#paypal-button-container");
+   };
+
    return (
       <div className="lg:w-[400px] w-full px-5 lg:px-0 text-white text-sm ">
          <p className="text-center text-base py-4"> just a few questions and you'll be on your way ⚡️</p>
@@ -59,6 +63,11 @@ export function Form({ event }) {
             />
             {formData.university.length ? <p className="text-xl">✅</p> : null}
          </div>
+         <Script
+            onLoad={addVenmoButton}
+            src="https://www.paypal.com/sdk/js?client-id=AenK64-hOKcbxbJfrU2gj0iOMKl8iPAOmWsgxR-j9kMzf8pZX96IG2V4t-VEFGk5mgcAGxxwg-vb92P6&enable-funding=venmo"
+         />
+         <div id="paypal-button-container"></div>
          <div
             style={{
                opacity: formData.name.length && isValidEmail(formData.email) && formData.university.length ? 1 : 0,

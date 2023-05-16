@@ -76,7 +76,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                         <span className="text-3xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent ">
                            {event.name}
                         </span>{" "}
-                        <span className=" text-base text-neutral-400 font-light"> on </span>{" "}
+                        {/* <span className=" text-base text-neutral-400 font-light"> on </span>{" "} */}
                         <span className=" text-xl  font-light">{formatDateHuman(event.start_time)}</span>{" "}
                         {/* <span className=" text-base text-neutral-400 font-light"> @ </span> */}
                         {/* <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).time}</span> */}

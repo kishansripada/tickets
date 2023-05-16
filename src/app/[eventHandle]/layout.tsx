@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
    //  const event = await getEvent();
    //  console.log(event);
    return (
-      <body className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen">
          <div className=" lg:py-8 py-6 border-b border-neutral-700  flex flex-row lg:justify-start justify-center items-center lg:px-36 bg-black ">
             {/* <img src="/logo.png" className="h-20" alt="" /> */}
             {/* <p className="text-white text-2xl font-semibold tracking-wide">nightpass</p> */}
@@ -27,6 +27,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
          </div>
 
          {children}
-      </body>
+      </div>
    );
 }

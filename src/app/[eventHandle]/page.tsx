@@ -38,6 +38,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
    // }, []);
    const event = await getEvent(eventHandle);
    console.log(event);
+   console.log(formatDateHuman(event.start_time));
    return (
       <>
          <div className="bg-black flex-grow ">
@@ -76,9 +77,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                            {event.name}
                         </span>{" "}
                         <span className=" text-base text-neutral-400 font-light"> on </span>{" "}
-                        <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).date}</span>{" "}
-                        <span className=" text-base text-neutral-400 font-light"> @ </span>
-                        <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).time}</span>
+                        <span className=" text-xl  font-light">{formatDateHuman(event.start_time)}</span>{" "}
+                        {/* <span className=" text-base text-neutral-400 font-light"> @ </span> */}
+                        {/* <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).time}</span> */}
                      </div>
                      <div className="text-2xl font-bold text-neutral-100"></div>
                      <div className="flex flex-row items-center mt-1">
@@ -189,27 +190,56 @@ type DateAndTime = {
    time: string;
 };
 
-function formatDateAndTime(inputDate: string): DateAndTime {
-   // Create a Date object from the input string
-   let dateObj = new Date(inputDate);
+function formatDateHuman(dateStr: string): string {
+   const now = new Date();
+   const inputDate = new Date(dateStr);
 
-   // Define an array with the names of the months
-   let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+   const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+   const dayOfWeek = dayNames[inputDate.getDay()];
 
-   // Format the date
-   let day = dateObj.getDate();
-   let suffix = ["th", "st", "nd", "rd"][(day - 20) % 10] || ["th", "st", "nd", "rd"][day] || "th";
-   let date = `${monthNames[dateObj.getMonth()]} ${day}${suffix}`;
+   const optionsDate: Intl.DateTimeFormatOptions = { month: "long", day: "numeric" };
+   const optionsTime: Intl.DateTimeFormatOptions = { hour: "numeric", minute: "numeric", hour12: true };
 
-   // Format the time
-   let hours = dateObj.getHours();
-   let minutes = dateObj.getMinutes();
-   let ampm = hours >= 12 ? "pm" : "am";
-   hours = hours % 12;
-   hours = hours ? hours : 12; // the hour '0' should be '12'
-   let minutesStr = minutes < 10 ? "0" + minutes : minutes.toString();
-   let time = `${hours}:${minutesStr}${ampm}`;
+   let strDate = new Intl.DateTimeFormat("en-US", optionsDate).format(inputDate);
+   let strTime = new Intl.DateTimeFormat("en-US", optionsTime).format(inputDate);
 
-   // Return the formatted date and time
-   return { date, time };
+   // Add appropriate ordinal suffix to the day
+   let day = inputDate.getDate();
+   let suffix = "th";
+   if (day % 10 == 1 && day != 11) {
+      suffix = "st";
+   } else if (day % 10 == 2 && day != 12) {
+      suffix = "nd";
+   } else if (day % 10 == 3 && day != 13) {
+      suffix = "rd";
+   }
+
+   // Combine month name, day with suffix
+   strDate = strDate.replace(new RegExp(day + "$"), `${day}${suffix}`);
+
+   // Convert AM/PM to lowercase
+   strTime = strTime.replace("AM", "am").replace("PM", "pm");
+
+   // Check if date is today or tomorrow
+   if (now.toDateString() === inputDate.toDateString()) {
+      return `today @ ${strTime}`;
+   } else if (now.getDate() + 1 === inputDate.getDate() && now.getMonth() === inputDate.getMonth() && now.getFullYear() === inputDate.getFullYear()) {
+      return `tmrw @ ${strTime}`;
+   } else if (
+      now.getDate() <= inputDate.getDate() &&
+      now.getDate() + 7 > inputDate.getDate() &&
+      now.getMonth() === inputDate.getMonth() &&
+      now.getFullYear() === inputDate.getFullYear()
+   ) {
+      return `this ${dayOfWeek}, ${strDate} @ ${strTime}`;
+   } else if (
+      now.getDate() + 7 <= inputDate.getDate() &&
+      now.getDate() + 14 > inputDate.getDate() &&
+      now.getMonth() === inputDate.getMonth() &&
+      now.getFullYear() === inputDate.getFullYear()
+   ) {
+      return `next ${dayOfWeek}, ${strDate} @ ${strTime}`;
+   } else {
+      return `${dayOfWeek}, ${strDate} @ ${strTime}`;
+   }
 }

@@ -7,7 +7,7 @@ import { Form } from "./Form";
 // });
 import Script from "next/script";
 import { Venmo } from "./Venmo";
-import { InstagramEmbed } from "./InstagramEmbed";
+// import { InstagramEmbed } from "./InstagramEmbed";
 // import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";

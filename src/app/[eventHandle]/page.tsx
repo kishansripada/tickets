@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 //    loading: () => <p>Loading...</p>,
 // });
 import { Venmo } from "./form/Venmo";
-import { InstagramEmbed } from "./InstagramEmbed";
+// import { InstagramEmbed } from "./InstagramEmbed";
 // import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
    console.log(event);
    return (
       <>
-         <div className="bg-black ">
+         <div className="bg-black flex-grow ">
             <div className="bg-black h-20 grid place-items-center px-[10%] ">
                <div className="bg-neutral-900 max-w-[700px] w-full h-12 rounded-md text-white flex flex-row items-center justify-center">
                   <div className="text-white bg-red-700 py-[1px] px-2 rounded-md text-xs flex flex-row items-center mr-2">
@@ -125,7 +125,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                      </div>
                   </div>
                   <div className="mt-10 lg:mt-0 lg:w-1/3 max-w-[90%] overflow-clip">
-                     <InstagramEmbed event={event}></InstagramEmbed>
+                     <img src="/gala.png" className=" border border-neutral-600 rounded-md" alt="" />
+
+                     {/* <InstagramEmbed event={event}></InstagramEmbed> */}
                   </div>
                </main>
             </div>

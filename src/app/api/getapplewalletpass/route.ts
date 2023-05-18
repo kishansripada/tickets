@@ -17,7 +17,8 @@ export async function POST(request: Request) {
    // let signerCert = await fs.readFile(path.join(process.cwd(), "src", "app", "api", "getapplewalletpass", "certs", "signerCert.pem"));
 
    // console.log(wwdr);
-   const baseUrl = process.env.VERCEL_URL || "http://localhost:8080";
+   const baseUrl = process.env.NODE_ENV === "production" ? `https://${process.env.VERCEL_URL}` : "http://localhost:8080";
+
    const [wwdrRes, signerKeyRes, signerCertRes] = await Promise.all([
       fetch(`${baseUrl}/certs/wwdr.pem`),
       fetch(`${baseUrl}/certs/signerKey.pem`),

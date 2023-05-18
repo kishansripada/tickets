@@ -32,14 +32,18 @@ export async function POST(request: Request) {
    const signerKey = Buffer.from(signerKeyArrayBuffer);
    const signerCert = Buffer.from(signerCertArrayBuffer);
    // Fetch the files from the public directory
-   const passJson = await fetch(`${baseUrl}/event.pass/pass.json`);
-   const iconPng = await fetch(`${baseUrl}/event.pass/icon.png`);
-   const icon2xPng = await fetch(`${baseUrl}/event.pass/icon@2x.png`);
-   const logoPng = await fetch(`${baseUrl}/event.pass/logo.png`);
-   const logo2xPng = await fetch(`${baseUrl}/event.pass/logo@2x.png`);
+
+   const iconPng = await fetch(`${baseUrl}/Event.pass/icon.png`);
+   const icon2xPng = await fetch(`${baseUrl}/Event.pass/icon@2x.png`);
+   const logoPng = await fetch(`${baseUrl}/Event.pass/logo.png`);
+   const logo2xPng = await fetch(`${baseUrl}/Event.pass/logo@2x.png`);
+
+   const passJsonResponse = await fetch(`${baseUrl}/Event.pass/pass.json`);
+   const passJson = await passJsonResponse.json();
+   const passJsonBuffer = Buffer.from(JSON.stringify(passJson));
 
    // Convert the files to Buffer
-   const passJsonBuffer = Buffer.from(await passJson.arrayBuffer());
+   // const passJsonBuffer = Buffer.from(await passJson.json());
    const iconPngBuffer = Buffer.from(await iconPng.arrayBuffer());
    const icon2xPngBuffer = Buffer.from(await icon2xPng.arrayBuffer());
    const logoPngBuffer = Buffer.from(await logoPng.arrayBuffer());

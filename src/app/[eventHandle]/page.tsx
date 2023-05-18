@@ -4,6 +4,10 @@ import dynamic from "next/dynamic";
 // const InstagramEmbed = dynamic(() => import("../[eventId]/InstagramEmbed").then((mod) => mod.InstagramEmbed), {
 //    loading: () => <p>Loading...</p>,
 // });
+// const Date = dynamic(() => import("./Date").then((mod) => mod.Date), {
+//    loading: () => <p>Loading...</p>,
+// });
+// import { Date } from "./Date";
 import { Venmo } from "./form/Venmo";
 // import { InstagramEmbed } from "./InstagramEmbed";
 // import { useSearchParams } from "next/navigation";
@@ -44,7 +48,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
    // }, []);
    const event = await getEvent(eventHandle);
    console.log(event);
-   console.log(formatDateHuman(event.start_time));
+   // console.log(formatDateHuman(event.start_time));
    return (
       <>
          <div className="bg-black flex-grow ">
@@ -83,6 +87,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                            {event.name}
                         </span>{" "}
                         {/* <span className=" text-base text-neutral-400 font-light"> on </span>{" "} */}
+                        {/* <Date event={event} /> */}
                         <span className=" text-xl  font-light">{formatDateHuman(event.start_time)}</span>{" "}
                         {/* <span className=" text-base text-neutral-400 font-light"> @ </span> */}
                         {/* <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).time}</span> */}
@@ -91,9 +96,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                      <div className="flex flex-row items-center mt-1">
                         <p className="text-2xl font-bold text-neutral-100">
                            <span className=" text-sm text-neutral-400 font-light">Presented by</span>{" "}
-                           <span className=" text-base  font-light">@spartansikhs</span>{" "}
+                           <span className=" text-base  font-light">@kishansripada</span>{" "}
                            <span className=" text-sm text-neutral-400 font-light">and</span>{" "}
-                           <span className=" text-base  font-light">@michigansikhs</span>
+                           <span className=" text-base  font-light">@instgramusername</span>
                         </p>
                      </div>
                      <div className="py-10 flex flex-row ">
@@ -190,11 +195,6 @@ function getTimeLeftUntil(date: Date): string {
       return `${diffInSeconds} seconds left`;
    }
 }
-
-type DateAndTime = {
-   date: string;
-   time: string;
-};
 
 function formatDateHuman(dateStr: string): string {
    const now = new Date();

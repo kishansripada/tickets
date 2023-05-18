@@ -103,7 +103,7 @@ export async function POST(request: Request) {
          .upload(`${res.qrcontents}.pkpass`, bufferData, { contentType: "application/vnd.apple.pkpass" });
 
       // console.log(error);
-      fs.writeFile(`${res.qrcontents}.pkpass`, bufferData);
+      // fs.writeFile(`${res.qrcontents}.pkpass`, bufferData);
       // });
    } catch (err) {
       console.log(err);

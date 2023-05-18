@@ -4,6 +4,7 @@ export async function getPaymentLink(productId: string, priceCents: number, cust
    "use server";
 
    let data = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+      cache: "no-store",
       body: `success_url=https://example.com/success&line_items[0][price_data][unit_amount]=${priceCents}&line_items[0][price_data][product]=${productId}&line_items[0][price_data][currency]=usd&line_items[0][quantity]=1&mode=payment&customer_email=${customerEmail}`,
       headers: {
          Authorization:

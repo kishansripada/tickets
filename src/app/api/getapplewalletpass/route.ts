@@ -92,6 +92,9 @@ export async function POST(request: Request) {
       for (let i = 0; i < res.eventTicket.auxiliaryFields.length; i++) {
          newPass.auxiliaryFields.push(res.eventTicket.auxiliaryFields[i]);
       }
+      for (let i = 0; i < res.eventTicket.headerFields.length; i++) {
+         newPass.headerFields.push(res.eventTicket.headerFields[i]);
+      }
 
       newPass.setLocations(res.locations);
       newPass.setBarcodes(res.qrcontents);

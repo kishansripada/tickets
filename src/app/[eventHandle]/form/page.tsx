@@ -38,7 +38,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
 
    return (
       <>
-         <div className="bg-neutral-900 h-screen  ">
+         <div className="bg-black h-screen  ">
             <Link href={`/${eventHandle}`}>
                {" "}
                <div className="flex flex-row items-center text-white cursor-pointer p-5">

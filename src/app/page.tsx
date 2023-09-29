@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
    return (
-      <main className="flex min-h-screen flex-col items-center justify-start px-5 xl:px-36 bg-black">
+      <main className="flex min-h-screen flex-col items-center justify-start px-5 xl:px-36 bg-black overflow-hidden relative">
          <div className=" text-6xl sm:text-6xl md:text-9xl xl:text-[150px] xl:leading-[1]  text-white font-bold pt-12">
             <p
                style={{
@@ -10,7 +10,7 @@ export default function Home() {
                   // webkitBackgroundClip: "text",
                   backgroundClip: "text",
                }}
-               className=" animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent   font-bold "
+               className="relative z-10 animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent   font-bold "
             >
                automatic, tiered pricing for your campus event
             </p>
@@ -19,6 +19,7 @@ export default function Home() {
             the simplest way to sell tickets to your small to medium scale campus event. let us handle the pricing tiers and venmo requests so that
             you can focus on your event.
          </p>
+         <img className="w-[250px] right-[50px] top-[200px] rotate-12 absolute" src="/iphone.png" alt="" />
          <a href="https://forms.gle/HgNNmuoXCSvJRdVk7">
             <div className="text-black bg-white mt-7 px-4 py-2 rounded-full flex flex-row items-center">
                <p>request for an event</p>

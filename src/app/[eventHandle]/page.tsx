@@ -71,24 +71,32 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                         <div className=" bg-indigo-800  py-[1px] px-2 mb-2 text-indigo-100 rounded-md  text-xs font-semibold flex flex-row items-center  ">
                            <p className="">
                               <span className="text-sm mr-2">⏳</span>
-                              {getTimeLeftUntil(new Date("2023-09-16"))}
+                              {getTimeLeftUntil(new Date("2023-11-3"))}
                            </p>
                         </div>
                         <div className=" bg-red-800  py-[1px] px-2 mb-2 text-indigo-100 rounded-md self-start text-xs font-semibold flex flex-row items-center  ">
                            <p className="">
                               <span className="text-sm mr-2">🔥</span>
-                              Price is increasing
+                              Tier 2
                            </p>
                         </div>
                      </div>
 
                      <div className=" mt-2  text-2xl font-bold text-neutral-100">
-                        <span className="text-3xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent ">
-                           {event.name}
+                        <span className="text-4xl mr-3 font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent ">
+                           {/* {event.name} */}
+                           AASHA
+                        </span>{" "}
+                        <span className=" text-xl  font-light">
+                           {/* {formatDateHuman(event.start_time)} */}
+                           Friday, November 3rd @ 7:00pm
                         </span>{" "}
                         {/* <span className=" text-base text-neutral-400 font-light"> on </span>{" "} */}
                         {/* <Date event={event} /> */}
-                        <span className=" text-xl  font-light">{formatDateHuman(event.start_time)}</span>{" "}
+                        <span className=" text-xl  font-light">
+                           {/* {formatDateHuman(event.start_time)} */}
+                           Friday, November 3rd @ 7:00pm
+                        </span>{" "}
                         {/* <span className=" text-base text-neutral-400 font-light"> @ </span> */}
                         {/* <span className=" text-xl  font-light">{formatDateAndTime(event.start_time).time}</span> */}
                      </div>
@@ -96,9 +104,9 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                      <div className="flex flex-row items-center mt-1">
                         <p className="text-2xl font-bold text-neutral-100">
                            <span className=" text-sm text-neutral-400 font-light">Presented by</span>{" "}
-                           <span className=" text-base  font-light">@kishansripada</span>{" "}
-                           <span className=" text-sm text-neutral-400 font-light">and</span>{" "}
-                           <span className=" text-base  font-light">@instgramusername</span>
+                           <span className=" text-base  font-light">@michiganiasa</span>{" "}
+                           {/* <span className=" text-sm text-neutral-400 font-light">and</span>{" "}
+                           <span className=" text-base  font-light">@instgramusername</span> */}
                         </p>
                      </div>
                      <div className="py-10 flex flex-row ">
@@ -107,7 +115,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
                      </div>
                      <div className="flex flex-row items-center  text-sm">
                         <p className="text-2xl mr-2">📍</p>
-                        <p className="  font-light text-neutral-300">Rogel Ballroom @ The Michigan Union</p>
+                        <p className="  font-light text-neutral-300">Michigan Theater</p>
                      </div>
                      <div className="flex flex-row items-center  text-sm">
                         <p className="text-2xl mr-2">⏰ </p>
@@ -145,7 +153,7 @@ export default async function Home({ params: { eventHandle } }: { params: { even
             </div>
 
             <div className="h-24 w-full fixed bottom-0  border-t border-neutral-700 flex flex-row items-center px-5 lg:px-10 z-50 bg-black">
-               <div className=" lg:justify-end justify-between flex flex-row items-center w-full ">
+               <div className="  justify-between flex flex-row items-center w-full ">
                   <div className="flex flex-row items-end mr-6 ">
                      <p className="text-2xl font-semibold text-white ">$25</p>
                   </div>
